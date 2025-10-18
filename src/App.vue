@@ -1,6 +1,8 @@
 <script setup lang="ts">
 // 数组去重
 import { unique, unique2, unique3, unique4, unique5 } from './demos'
+import Child from './ChildComponent.vue'
+import HelloWorld from './HelloWorld.vue';
 console.log('unique(1, 2, 2, 3, 4, 4, 5)->', unique(1, 2, 2, 3, 4, 4, 5))
 console.log('unique2(1, 2, 2, 3, 4, 4, 5)->', unique2(1, 2, 2, 3, 4, 4, 5))
 const arr = [
@@ -29,11 +31,12 @@ console.log('unique5(arr, "name")->', unique5(arr, (item) => item.id))
 
 <script lang="ts">
 // 数组去重
-
 </script>
 
 <template>
   <h1>You did it!</h1>
+  <Child />
+  <HelloWorld />
 </template>
 
 <style scoped></style>
