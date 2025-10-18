@@ -10,7 +10,6 @@ class EventBus {
         // } else {
         //     this.events[eventName] = this.events[eventName].add(cb)
         // }
-        // this.events[eventName] = (this.events[eventName] ?? new Set()).add(cb)
         (this.events[eventName] ??= new Set()).add(cb)
     }
 
