@@ -13,7 +13,7 @@ console.log(curry(function (a: number, b: number, c: number) {
 // 其它测试用例
 console.log(curry(function (a: number, b: number) {
     return a + b
-})(1)(9))
+})(1)(2))
 </script>
 
 <template>

@@ -2,16 +2,16 @@
 export function curry<T = any>(fn: (...args: T[]) => T): any {
     const arity = fn.length
     console.log('arity->', arity)
-    function curried<T = any>(...args: T[]): any {
+    function _curried<T = any>(...args: T[]): any {
         return function (...nextArgs: T[]): any {
             const allArgs = [...args, ...nextArgs] as any[]
             if (allArgs.length >= arity) {
-                return fn(...allArgs)
+                return fn.apply(this, allArgs)
             } else {
-                return curried(...allArgs)
+                return _curried(...allArgs)
             }
         }
     }
 
-    return curried
+    return _curried
 }
