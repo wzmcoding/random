@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { bus, curry, arrayToTree, arr1 } from './demos';
+import { bus, curry, arrayToTree, arr1, debounceWithPromise } from './demos';
 
 const count = ref(0)
 bus.on('increment', (val: number) => {
@@ -17,6 +17,20 @@ console.log(curry(function (a: number, b: number) {
 
 
 console.log('arrayToTree->', arrayToTree(arr1))
+
+// 防抖
+const debounce = debounceWithPromise(function (a: number, b: number) {
+    console.log('debounce->', a, b)
+    return a + b
+}, 1500)
+setTimeout(() => {
+    debounce(1, 1)
+    debounce(2, 2)
+    const res = debounce(1, 2)
+    res.then((result: unknown) => {
+        console.log('debounce result->', result)
+    })
+}, 1000)
 </script>
 
 <template>
