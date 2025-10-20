@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { bus, curry, arrayToTree, arr1, debounceWithPromise } from './demos';
+import { bus, curry, arrayToTree, arr1, debounceWithPromise, throttle } from './demos';
 
 const count = ref(0)
 bus.on('increment', (val: number) => {
@@ -29,6 +29,20 @@ setTimeout(() => {
     const res = debounce(1, 2)
     res.then((result: unknown) => {
         console.log('debounce result->', result)
+    })
+}, 1000)
+
+// 节流
+const throttleFn = throttle(function (a: number, b: number) {
+    console.log('throttle->', a, b)
+    return a + b
+}, 1500)
+setTimeout(() => {
+    const res = throttleFn(1, 1)
+    throttleFn(2, 2)
+    throttleFn(1, 2)
+    res.then((result: unknown) => {
+        console.log('throttle result->', result)
     })
 }, 1000)
 </script>
