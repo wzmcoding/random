@@ -1,7 +1,10 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import { ref } from 'vue'
 import { bus, curry, arrayToTree, arr1, debounceWithPromise, throttle, myInstanceof } from './demos';
 import { sleep } from './demos/sleep函数';
+import { deepClone } from './demos/deepClone支持循环引用';
+import { allSettled } from './demos/实现Promise.allSettled';
 
 const count = ref(0)
 bus.on('increment', (val: number) => {
@@ -61,6 +64,31 @@ const student = new Student()
 console.log('myInstanceof', myInstanceof(student, Student)) // true
 console.log('myInstanceof', myInstanceof(student, Person)) // true
 console.log('myInstanceof', myInstanceof(student, Array)) // false
+
+// deepClone 测试
+// 测试用例
+const obj: any = {
+    a: {
+        b: {
+            c: 1
+        },
+        d: new Date(),
+        e: /abc/g,
+    },
+}
+obj.a['f'] = obj // 创建循环引用
+console.log('deepClone', deepClone(obj))
+
+// allSettled 测试用例
+const promise1 = Promise.resolve(3)
+const promise2 = 42
+const promise3 = new Promise((resolve) => {
+    setTimeout(resolve, 100, 'foo')
+})
+const promises = [promise1, promise2, promise3]
+allSettled(promises).then((results) => {
+    console.log('Promise.allSettled->', results)
+})
 </script>
 
 <template>
