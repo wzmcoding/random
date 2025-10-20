@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { bus, curry, arrayToTree, arr1, debounceWithPromise, throttle } from './demos';
+import { sleep } from './demos/sleep函数';
 
 const count = ref(0)
 bus.on('increment', (val: number) => {
@@ -45,6 +46,13 @@ setTimeout(() => {
         console.log('throttle result->', result)
     })
 }, 1000)
+
+// sleep 函数测试
+async function fn() {
+    await sleep(2000)
+    console.log('2秒后执行')
+}
+fn()
 </script>
 
 <template>
