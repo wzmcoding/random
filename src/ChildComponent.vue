@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { bus, curry } from './demos';
+import { bus, curry, arrayToTree, arr1 } from './demos';
 
 const count = ref(0)
 bus.on('increment', (val: number) => {
@@ -14,6 +14,9 @@ console.log(curry(function (a: number, b: number, c: number) {
 console.log(curry(function (a: number, b: number) {
     return a + b
 })(1)(2))
+
+
+console.log('arrayToTree->', arrayToTree(arr1))
 </script>
 
 <template>
