@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { bus, curry, arrayToTree, arr1, debounceWithPromise, throttle } from './demos';
+import { bus, curry, arrayToTree, arr1, debounceWithPromise, throttle, myInstanceof } from './demos';
 import { sleep } from './demos/sleep函数';
 
 const count = ref(0)
@@ -53,6 +53,14 @@ async function fn() {
     console.log('2秒后执行')
 }
 fn()
+// instanceof 测试
+// 测试用例
+class Person { }
+class Student extends Person { }
+const student = new Student()
+console.log('myInstanceof', myInstanceof(student, Student)) // true
+console.log('myInstanceof', myInstanceof(student, Person)) // true
+console.log('myInstanceof', myInstanceof(student, Array)) // false
 </script>
 
 <template>
