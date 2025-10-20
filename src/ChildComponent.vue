@@ -5,6 +5,7 @@ import { bus, curry, arrayToTree, arr1, debounceWithPromise, throttle, myInstanc
 import { sleep } from './demos/sleep函数';
 import { deepClone } from './demos/deepClone支持循环引用';
 import { allSettled } from './demos/实现Promise.allSettled';
+import { LazyMan } from './demos/实现LazyMan链式调用';
 
 const count = ref(0)
 bus.on('increment', (val: number) => {
@@ -89,6 +90,9 @@ const promises = [promise1, promise2, promise3]
 allSettled(promises).then((results) => {
     console.log('Promise.allSettled->', results)
 })
+
+// lazyMan 测试用例
+console.log('LazyMan->', LazyMan('zm').sleep(2).eat('午饭').sleepFirst(1).sleep(3).eat('晚饭'))
 </script>
 
 <template>
