@@ -12,7 +12,7 @@ class LazyManImpl {
         setTimeout(() => { this.next() })
     }
     next() {
-        // 获取下一个任务
+        // 负责从队列取出并执行下一个任务
         const task = this.tasks.shift()
         if (task) {
             task()
@@ -51,7 +51,8 @@ class LazyManImpl {
     }
 }
 export function LazyMan(name: string) {
-    return new LazyManImpl(name)
+    // 工厂函数，便于以函数形式调用
+    return new LazyManImpl(name) // 返回类实例
 }
 // 测试用例
 // console.log('LazyMan->', LazyMan('zm').sleep(2).eat('午饭').sleepFirst(1).sleep(3).eat('晚饭'))
