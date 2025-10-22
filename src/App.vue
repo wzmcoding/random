@@ -28,37 +28,61 @@
 // console.log('unique4(arr, "name")->', unique4(arr, 'id'))
 // console.log('unique5(arr, "name")->', unique5(arr, (item) => item.id))
 
-import { createCancelableTask } from './场景题'
+// import { createCancelableTask, TaskScheduler } from './场景题'
 // 测试用例
-console.log("开始防竞态请求测试...");
+// console.log("开始防竞态请求测试...");
 
-const { run, cancel } = createCancelableTask(async (num: number) => {
-  console.log(`开始请求 ${num}`);
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  console.log(`请求 ${num} 完成`);
-  return `结果 ${num}`;
-});
+// const { run, cancel } = createCancelableTask(async (num: number) => {
+//   console.log(`开始请求 ${num}`);
+//   await new Promise(resolve => setTimeout(resolve, 1000));
+//   console.log(`请求 ${num} 完成`);
+//   return `结果 ${num}`;
+// });
 
-// 连续发送三个请求
-run(1).then(result => {
-  console.log(`请求1结果: ${result}`);
-}).catch(err => {
-  console.log(`请求1被取消`);
-});
+// // 连续发送三个请求
+// run(1).then(result => {
+//   console.log(`请求1结果: ${result}`);
+// }).catch(err => {
+//   console.log(`请求1被取消`);
+// });
 
-run(2).then(result => {
-  console.log(`请求2结果: ${result}`);
-}).catch(err => {
-  console.log(`请求2被取消`);
-});
+// run(2).then(result => {
+//   console.log(`请求2结果: ${result}`);
+// }).catch(err => {
+//   console.log(`请求2被取消`);
+// });
 
-run(3).then(result => {
-  console.log(`请求3结果: ${result}`);
-}).catch(err => {
-  console.log(`请求3被取消`);
-});
+// run(3).then(result => {
+//   console.log(`请求3结果: ${result}`);
+// }).catch(err => {
+//   console.log(`请求3被取消`);
+// });
 
-console.log("注意: 只有最后一个请求(请求3)会成功完成，前两个会被自动取消");
+// console.log("注意: 只有最后一个请求(请求3)会成功完成，前两个会被自动取消");
+//创建一个最大并发数为2的调度器实例
+// const scheduler = new TaskScheduler(2)
+// // 创建一个延迟函数
+// function delay(time: number) {
+//   return new Promise(resolve => setTimeout(resolve, time))
+// }
+// // 开始计时
+// console.time('分片1')
+// console.time('分片2')
+// console.time('分片3')
+// console.time('分片4')
+// console.time('分片5')
+
+// // 添加5个任务到调度器
+// // 由于并发限制为2，这些任务会分批执行：
+// // 第一批：分片1和2同时执行，1秒后完成
+// // 第二批：分片3和4同时执行，2秒后完成
+// // 第三批：分片5单独执行，3秒后完成
+// scheduler.addTask(() => delay(1000).then(() => console.timeEnd('分片1完成'))) // 1秒后输出分片1完成
+// scheduler.addTask(() => delay(1000).then(() => console.timeEnd('分片2完成'))) // 1秒后输出分片2完成
+// scheduler.addTask(() => delay(2000).then(() => console.timeEnd('分片3完成'))) // 2秒后输出分片3完成
+// scheduler.addTask(() => delay(2000).then(() => console.timeEnd('分片4完成'))) // 2秒后输出分片4完成
+// scheduler.addTask(() => delay(3000).then(() => console.timeEnd('分片5完成'))) // 3秒后输出分片5完成
+
 </script>
 
 <script lang="ts">

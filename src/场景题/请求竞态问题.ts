@@ -38,35 +38,35 @@ export function createCancelableTask(fn: any) {
     }
 }
 // 测试用例
-console.log("开始防竞态请求测试...");
+// console.log("开始防竞态请求测试...");
 
-const { run, cancel } = createCancelableTask(async (num: number) => {
-    console.log(`开始请求 ${num}`);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log(`请求 ${num} 完成`);
-    return `结果 ${num}`;
-});
+// const { run, cancel } = createCancelableTask(async (num: number) => {
+//     console.log(`开始请求 ${num}`);
+//     await new Promise(resolve => setTimeout(resolve, 1000));
+//     console.log(`请求 ${num} 完成`);
+//     return `结果 ${num}`;
+// });
 
-// 连续发送三个请求
-run(1).then(result => {
-    console.log(`请求1结果: ${result}`);
-}).catch(err => {
-    console.log(`请求1被取消`);
-});
+// // 连续发送三个请求
+// run(1).then(result => {
+//     console.log(`请求1结果: ${result}`);
+// }).catch(err => {
+//     console.log(`请求1被取消`);
+// });
 
-run(2).then(result => {
-    console.log(`请求2结果: ${result}`);
-}).catch(err => {
-    console.log(`请求2被取消`);
-});
+// run(2).then(result => {
+//     console.log(`请求2结果: ${result}`);
+// }).catch(err => {
+//     console.log(`请求2被取消`);
+// });
 
-run(3).then(result => {
-    console.log(`请求3结果: ${result}`);
-}).catch(err => {
-    console.log(`请求3被取消`);
-});
+// run(3).then(result => {
+//     console.log(`请求3结果: ${result}`);
+// }).catch(err => {
+//     console.log(`请求3被取消`);
+// });
 
-console.log("注意: 只有最后一个请求(请求3)会成功完成，前两个会被自动取消");
+// console.log("注意: 只有最后一个请求(请求3)会成功完成，前两个会被自动取消");
 // 开始防竞态请求测试...
 // App.vue:36 开始请求 1
 // App.vue:36 开始请求 2
@@ -75,4 +75,4 @@ console.log("注意: 只有最后一个请求(请求3)会成功完成，前两�
 // App.vue:38 请求 1 完成
 // App.vue:38 请求 2 完成
 // App.vue:38 请求 3 完成
-// App.vue:56 请求3结果: 结果 3
+// App.vue:56 请求3结果: 结果 3 
