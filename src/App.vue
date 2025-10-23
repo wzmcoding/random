@@ -1,6 +1,6 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
-import { createCacheRequest } from './场景题';
+// import { createCacheRequest } from './场景题';
 
 // 数组去重
 // import { unique, unique2, unique3, unique4, unique5 } from './demos'
@@ -89,26 +89,26 @@ import { createCacheRequest } from './场景题';
 
 
 // 测试用例
-const mockApi = (arg: any) => {
-  console.log('执行API调用，参数:', arg);
-  return Promise.resolve(`结果: ${arg}`);
-};
+// const mockApi = (arg: any) => {
+//   console.log('执行API调用，参数:', arg);
+//   return Promise.resolve(`结果: ${arg}`);
+// };
 
-const cachedRequest = createCacheRequest(mockApi, 1000);
+// const cachedRequest = createCacheRequest(mockApi, 1000);
 
-console.log('=== 第一次调用 ===');
-cachedRequest('test').then(result => console.log('第一次结果:', result));
+// console.log('=== 第一次调用 ===');
+// cachedRequest('test').then(result => console.log('第一次结果:', result));
 
-console.log('=== 第二次相同参数调用 ===');
-cachedRequest('test').then(result => console.log('第二次结果:', result));
+// console.log('=== 第二次相同参数调用 ===');
+// cachedRequest('test').then(result => console.log('第二次结果:', result));
 
-console.log('=== 第三次不同参数调用 ===');
-cachedRequest('other').then(result => console.log('第三次结果:', result));
+// console.log('=== 第三次不同参数调用 ===');
+// cachedRequest('other').then(result => console.log('第三次结果:', result));
 
-setTimeout(() => {
-  console.log('=== 1秒后再次调用相同参数 ===');
-  cachedRequest('test').then(result => console.log('第四次结果:', result));
-}, 1500);
+// setTimeout(() => {
+//   console.log('=== 1秒后再次调用相同参数 ===');
+//   cachedRequest('test').then(result => console.log('第四次结果:', result));
+// }, 1500);
 
 // === 第一次调用 ===
 // 执行API调用，参数: test
