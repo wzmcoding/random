@@ -121,10 +121,21 @@
 // === 1秒后再次调用相同参数 ===
 // 执行API调用，参数: test
 // 第四次结果: 结果: test
-</script>
 
-<script lang="ts">
-// 数组去重
+
+/**
+ * 响应式原理
+ */
+import { effect, ref } from './vue-interview'
+
+const count = ref<number>(0)
+effect(() => {
+  console.log('effect 运行了', count.value)
+})
+
+setTimeout(() => {
+  count.value++ // 会重新执行 effect
+}, 1000)
 </script>
 
 <template>
